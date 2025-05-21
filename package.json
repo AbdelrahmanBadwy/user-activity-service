@@ -1,0 +1,34 @@
+{
+  "name": "user-activity-service",
+  "version": "1.0.0",
+  "description": "Scalable event-driven microservice for processing user activities",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "consumer": "node src/consumer.js",
+    "dev:server": "nodemon src/server.js",
+    "dev:consumer": "nodemon src/consumer.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "joi": "^17.7.0",
+    "kafkajs": "^2.2.4",
+    "mongoose": "^6.8.4",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-activity-consumer
+spec:
+  selector:
+    matchLabels:
+      app: user-activity-consumer
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: user-activity-consumer
+    spec:
+      containers:
+        - name: user-activity-consumer
+          image: abdelrahmanelbadawy1/user-activity-consumer:latest
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: MONGODB_URI
+              value: "mongodb://mongodb:27017/user-activities"
+            - name: KAFKA_BROKERS
+              value: "kafka:9092"
+            - name: KAFKA_CONSUMER_GROUP
+              value: "activity-processor-group"
