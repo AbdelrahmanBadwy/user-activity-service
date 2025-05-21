@@ -26,7 +26,7 @@ exports.logActivity = async (req, res) => {
 
 exports.getActivities = async (req, res) => {
   try {
-    // Extract query parameters
+    // query parameters
     const {
       userId,
       activityType,
@@ -36,19 +36,17 @@ exports.getActivities = async (req, res) => {
       limit = 10,
     } = req.query;
 
-    // Build filters
+    // filters
     const filters = {};
     if (userId) filters.userId = userId;
     if (activityType) filters.activityType = activityType;
-
-    // Date range filter
     if (startDate || endDate) {
       filters.timestamp = {};
       if (startDate) filters.timestamp.$gte = new Date(startDate);
       if (endDate) filters.timestamp.$lte = new Date(endDate);
     }
 
-    // Pagination
+    // pagination
     const pagination = {
       page: parseInt(page),
       limit: parseInt(limit),
